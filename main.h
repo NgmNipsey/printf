@@ -3,10 +3,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <stdarg.h>
 #include <limits.h>
 #include <unistd.h>
+#include <string.h>
 
 #define BUFF_SIZE 1024
 #define BUFF_FLUSH -1
@@ -32,14 +32,13 @@
  */
 typedef struct parameters
 {
-	unsigned int unsign : 1;
+	unsigned int unsign          : 1;
 
-	unsigned int plus_flag 	     : 1;
+	unsigned int plus_flag       : 1;
 	unsigned int space_flag      : 1;
 	unsigned int hashtag_flag    : 1;
 	unsigned int zero_flag       : 1;
 	unsigned int minus_flag      : 1;
-
 	unsigned int width;
 	unsigned int precision;
 
@@ -48,7 +47,7 @@ typedef struct parameters
 } params_t;
 
 /**
- * struct specifiers - specifiers struct.
+ * struct specifier - specifiers struct.
  * @specifier: string specifier.
  * @f: pointer init;
  *
