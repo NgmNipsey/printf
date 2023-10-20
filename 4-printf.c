@@ -8,7 +8,7 @@
  *
  * Return: Pointer.
  */
-char *get_precision(char *p, params_t *params, va_list ap);
+char *get_precision(char *p, params_t *params, va_list ap)
 {
 	int ac = 0;
 
@@ -22,9 +22,9 @@ char *get_precision(char *p, params_t *params, va_list ap);
 	}
 	else
 	{
-		while (_isdigit(*P))
-		ac = ac + 10 + (*P++ - '0');
+		while (_isdigit(*p))
+		ac = ac + 10 + (*p++ - '0');
 	}
 	params->precision = ac;
-	return (s);
+	return (p);
 }

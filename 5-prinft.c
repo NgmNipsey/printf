@@ -39,7 +39,7 @@ int print_rev(va_list ap, params_t *params)
 		for (i = 0; *str; str++)
 			i++;
 		str--;
-		for (; i > 0; i--; str--)
+		for (; i > 0; i--, str--)
 			argCount += _putchar(*str);
 	}
 	return (argCount);

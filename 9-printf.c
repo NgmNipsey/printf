@@ -10,7 +10,7 @@
 int print_char(va_list ap, params_t *params)
 {
 	char pad_char = ' ';
-	unsigned int padin = 0, sum = 0, ch va_arg(ap, int);
+	unsigned int padin = 0, sum = 0, ch = va_arg(ap, int);
 
 	if (params->minus_flag)
 		sum += _putchar(ch);
@@ -65,11 +65,11 @@ int print_string(va_list ap, params_t *params)
 			if (params->precision != UINT_MAX)
 				while (i < padin)
 				{
-					sum += _putchat(*str++);
+					sum += _putchar(*str++);
 					i++;
 				}
 			else
-				sum += _putchar(str);
+				sum += _puts(str);
 		}
 		while (j++ < params->width)
 			sum += _putchar(pad_char);
@@ -82,7 +82,7 @@ int print_string(va_list ap, params_t *params)
 					i++;
 				}
 			else
-				sum += _putchar(str);
+				sum += _puts(str);
 		}
 		return (sum);
 }
@@ -116,7 +116,7 @@ int print_S(va_list ap, params_t *params)
 	int sum = 0;
 
 	if ((int)(!str))
-		return (_putchar(NULL_STRING));
+		return (_puts(NULL_STRING));
 	while (*str)
 	{
 		if ((*str > 0 && *str < 32) || *str >= 127)

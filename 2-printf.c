@@ -11,7 +11,7 @@ int _puts(char *str)
 	char *st = str;
 
 	while (*str)
-		_putchar(str++);
+		_putchar(*str++);
 	return(str - st);
 }
 
@@ -24,7 +24,7 @@ int _puts(char *str)
 int _putchar(int c)
 {
 	static int j;
-	statict char buff(BUFF_SIZE);
+	static char buff[BUFF_SIZE];
 
 	if (c == BUFF_FLUSH || j >= BUFF_SIZE)
 	{

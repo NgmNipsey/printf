@@ -10,7 +10,7 @@
 #define BUFF_SIZE 1024
 #define BUFF_FLUSH -1
 
-#define NULL_STRING *(null)*
+#define NULL_STRING "(null)"
 #define PARAMS_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
 #define CONVERT_LOWERCASE 1
@@ -66,11 +66,11 @@ int _putchar(int c);
 int print_char(va_list ap, params_t *params);
 int print_int(va_list ap, params_t *params);
 int print_string(va_list ap, params_t *params);
-int print_percent(va_list ap, paraams_t *params);
-int print_s(va_list ap, params_t *params);
+int print_percent(va_list ap, params_t *params);
+int print_S(va_list ap, params_t *params);
 
 /* numbers.c */
-char *convert(long int num, int base, int flags, params_t, *params);
+char *convert(long int num, int base, int flags, params_t *params);
 int print_unsigned(va_list ap, params_t *params);
 int print_address(va_list ap, params_t *params);
 
@@ -84,8 +84,8 @@ char *get_width(char *s, params_t *params, va_list ap);
 /* convert_numbers.c */
 int print_hex(va_list ap, params_t *params);
 int print_HEX(va_list ap, params_t *params);
-int print_binary(va_list ap, params_t params);
-int print_octal(va_list ap, params_t params);
+int print_binary(va_list ap, params_t *params);
+int print_octal(va_list ap, params_t *params);
 
 /* simple_printers.c */
 int print_from_to(char *start, char *stop, char *except);
@@ -97,10 +97,10 @@ int _isdigit(int c);
 int _strlen(char *s);
 int print_number(char *str, params_t *params);
 int print_number_right_shift(char *str, params_t *params);
-int print_number_right_shift(char *str, params_t *params);
+int print_number_left_shift(char *str, params_t *params);
 
 /* params.c */
-void init_params(params_t *params);
+void init_params(params_t *params, va_list ap);
 
 /* string_fieds.c */
 char *get_precision(char *p, params_t *params, va_list ap);

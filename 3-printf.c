@@ -21,7 +21,7 @@ int (*get_specifier(char *s))(va_list ap, params_t *params)
 		{"X", print_HEX},
 		{"P", print_address},
 		{"S", print_S},
-		{"r", print_r},
+		{"r", print_rev},
 		{"R", print_rot13},
 		{NULL, NULL}
 	};
@@ -103,7 +103,7 @@ int get_modifier(char *s, params_t *params)
 			j = params->l_modifier = 1;
 			break;
 		case 'h':
-			j = parmas->h_modifier = 1;
+			j = params->h_modifier = 1;
 			break;
 	}
 	return (j);
