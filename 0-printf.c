@@ -9,46 +9,40 @@
 int _printf(const char *format, ...)
 {
 	int argCount = 0;
-	va_list argList;
+	va_list ap;
+	char *p, *str;
+	params_t params = PARAMS_INIT;
 
-	if (format == NULL)
+	va_start(ap, format);
+	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
-
-	va_start(argList, format);
-	while (*format)
+	if (!format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
+	for (p = (char *)format; *p; p++)
 	{
-		if (*format != '%')
+		init_params(&params, ap);
+		if (*p != '%')
 		{
-			write(1, format, 1), argCount++;
+			argCount += _putchar(*p);
+			continue;
 		}
+		start = p;
+		p++;
+		while (get_flag(p, &params))
+		{
+			p++;
+		}
+		p = get_width(p, &params, ap);
+		p = get_precision(p, &params, ap);
+		if (get_modifier(p, &params))
+			p++;
+		if (!get_specifier(p))
+			argCount += print_from_to(start, p,
+					params.l_modifier || params.h_modifier ? p - 1 : 0);
 		else
-		{
-			format++;
-			if (*format == '\0')
-				break;
-			if (*format == '%')
-			{
-				write(1, format, 1), argCount++;
-			}
-			else if (*format == 'c')
-			{
-				char c = va_arg(argList, int);
-
-				write(1, &c, 1), argCount++;
-			}
-			else if (*format == 's')
-			{
-				char *st = va_arg(argList, char *);
-				int length = 0;
-
-				while (st[length] != '\0')
-					length++;
-				write(1, st, length);
-				argCount += length;
-			}
-		}
-		format++;
+			argCount += get_print_func(p, ap, &params);
 	}
-	va_end(argList);
+	_putchar(BUFF_FLUSH);
+	va_end(ap);
 	return (argCount);
 }
